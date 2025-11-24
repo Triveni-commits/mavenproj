@@ -353,7 +353,86 @@ docker pull jasonrivers/nagios:latest
 → docker rmi jasonrivers/nagios:latest
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Login to AWS Academy.
 
+Open Dashboard.
 
+Go to Learner Lab.
+
+Open Modules and click Launch.
+
+Click Start Lab.
+
+Wait until AWS turns Green.
+
+Login to AWS / Canvas account.
+
+Go to Services → EC2.
+
+Select the nearest region.
+
+Click Launch Instance.
+
+Give a name to the instance.
+
+Select Ubuntu AMI (Free-tier eligible).
+
+Select 64-bit architecture.
+
+Choose t2.micro instance type.
+
+Create a new key pair and download the .pem file.
+
+In Network Settings, enable HTTP.
+
+Enable HTTPS.
+
+Keep Storage as 8GB.
+
+Click Launch Instance.
+
+Number of instances = 1.
+
+After creation, select the instance.
+
+Click Connect.
+
+Copy the SSH “ssh -i” command.
+
+Go to PowerShell / Git Bash.
+
+Navigate (cd) to the folder containing the key pair.
+
+Paste and run the SSH command.
+
+Run: sudo apt update.
+
+Run: sudo apt-get install docker.io.
+
+Run: sudo apt install git.
+
+Run: sudo apt install nano.
+
+Run: git clone <repo-link>.
+
+Run: cd <project-folder>.
+
+Run: nano Dockerfile.
+
+Run: sudo docker build -t webapp .
+
+Run: sudo docker images.
+
+Run: sudo docker run -d --name webapp -p 6060:8080 webapp.
+
+Copy Public IPv4 address of instance.
+
+Open: http://<public-ip>:6060.
+
+If not working, edit inbound rules and add port 6060.
+
+To stop container: sudo docker stop webapp.
+
+To remove container: sudo docker rm <container-id>.
 
 
