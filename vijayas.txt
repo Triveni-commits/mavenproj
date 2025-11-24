@@ -1,0 +1,14 @@
+#JENKINS PIPELINE SCRIPT -  MAVEN JAVA PROJECT
+1)Open jenkins 
+2)new item +
+3)select pipeline and give name and click ok
+4)description -leave empty np
+5) triggers lo tick build periodically in schedule box write H 18 * * *
+6)poll SCM lo schedule box lo write H/5  * * * *
+7)Click apply and save
+8)
+
+#MINIKUBE AND NAGIOS:
+#MINIKUBE
+1)Open docker desktop
+2)
