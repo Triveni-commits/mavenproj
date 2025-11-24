@@ -5,9 +5,51 @@
 4)description -leave empty np
 5) triggers lo tick build periodically in schedule box write H 18 * * *
 6)poll SCM lo schedule box lo write H/5  * * * *
-7)Click apply and save
-8)
+script lo paste:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+pipeline {
+    agent any
+    tools {
+        maven 'Maven-3.9.6' //replace with system name MAVEN_HOME
+    }
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
 
+        stage('git repo & clean') {
+            steps {
+                bat "git clone https://github.com/Vijayasri1710/SELAB_maven_java_project.git"
+                bat "mvn clean -f SELAB_maven_java_project"
+            }
+        }
+
+        stage('install') {
+            steps {
+                bat "mvn install -f SELAB_maven_java_project/pom.xml"
+            }
+        }
+
+        stage('test') {
+            steps {
+                bat "mvn test -f SELAB_maven_java_project/pom.xml"
+            }
+        }
+
+        stage('package') {
+            steps {
+                bat "mvn package -f SELAB_maven_java_project/pom.xml"
+            }
+        }
+    }
+}
+
+7)Click apply and save
+8)click on build now and show console op by clicking on the #number
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #MINIKUBE AND NAGIOS:
 #MINIKUBE
 1)Open docker desktop
