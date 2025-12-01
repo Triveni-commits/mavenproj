@@ -347,7 +347,7 @@ kubectl get svc mynginx
 #NAGIOS COMMANDS
 
 docker pull jasonrivers/nagios:latest
-→ docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest   -> openlocalhost:8080 it will ask username:nagiosadmin , pass:nagios
+→ docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest   -> openlocalhost:8888 it will ask username:nagiosadmin , pass:nagios
 → docker stop nagiosdemo
 → docker rm nagiosdemo
 → docker rmi jasonrivers/nagios:latest
@@ -418,6 +418,9 @@ Run: git clone <repo-link>.
 Run: cd <project-folder>.
 
 Run: nano Dockerfile.
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+
 
 Run: sudo docker build -t webapp .
 
