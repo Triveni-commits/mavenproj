@@ -191,3 +191,53 @@ You should see:
 Hello from 24BD5A0503 - NEKSHASRINIVAS
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Docker CLI Commands
+Installing Docker and Setting up Nginx inside Ubuntu Container
+
+Step 1: Check Docker installation & Pull Ubuntu image
+Check that Docker is installed and running:
+docker --version
+
+Pull the latest Ubuntu image from Docker Hub:
+docker pull ubuntu:latest
+
+Step 2: Run an Ubuntu container
+Create and start a new container named myubuntu, mapping host port 9090 to container port 80:
+docker run -it -p 9090:80 --name myubuntu ubuntu:latest
+
+
+Step 3: Update packages and install Nginx (and nano)
+Inside the container, run:
+
+apt update
+apt install nginx nano -y
+
+Step 4: Start Nginx and go to index.html
+Start the Nginx service:
+
+service nginx start
+
+Go to the folder where the default Nginx page is stored:
+cd /usr/share/nginx/html
+ls
+
+You will see index.html here.
+Open index.html in nano editor:
+
+nano index.html
+
+Edit the file – for example, change the <h1> line to:
+<h1>Welcome user, I'm Neksha Srinivas!</h1>
+
+Save and exit nano:
+Press Ctrl + O → Enter (to save)
+Press Ctrl + X (to exit)
+
+Step 5: View the page from browser (localhost)
+
+On your Windows host, open a browser (Chrome/Edge) and go to:
+http://localhost:9090
+
+You should see your customized Nginx page:
+Welcome user, I'm Neksha Srinivas!
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
