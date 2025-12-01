@@ -1,5 +1,59 @@
+DOCKER-IMAGE CREATION
+---------------------------------------------------------------------------------------
+Method 1: Image Creation Using docker commit
 
-DOCKER
+Step 1: Start a new container
+docker run -it --name ubuntu-con-1 ubuntu:latest
+
+Step 2: Make changes inside the container
+apt update
+apt install -y git
+
+Step 3: Exit the container
+exit
+
+Step 4: Create image from container
+docker commit ubuntu-con-1 img-commit-1
+
+Step 5: Check images
+docker images
+
+Step 6 (optional): Tag and push
+docker tag img-commit-1 triveni27/img-commit-1
+docker push triveni27/img-commit-1
+
+✅ Method 2: Image Creation Using Dockerfile
+
+Step 1: Create folder
+mkdir image-creation
+cd image-creation
+
+Step 2: Create Dockerfile
+notepad Dockerfile
+
+Step 3: Add instructions in Dockerfile
+
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y git
+CMD ["bash"]
+
+
+Step 4: Build image
+docker build -t img-dockerfile-1 .
+
+Step 5: Test the image
+docker run -it img-dockerfile-1
+
+Step 6: Check images
+docker images
+
+Step 7 (optional): Tag and push
+docker tag img-dockerfile-1 triveni27/img-dockerfile-1
+docker push triveni27/img-dockerfile-1
+
+---------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+DOCKER-compose
 ----------------------------------------------------------------------------------
 PART 1 – Docker-compose with two servers (nginx + tomee)
 Step 1 – Run two containers using docker run (simple way)
@@ -41,7 +95,7 @@ Step 5 – Open in browser
 
 http://localhost:8060 → nginx page
 http://localhost:8050 → tomee page
-----------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 PART 2 – WordPress + MySQL using docker-compose
 Step 1 – Create folder and file
 In PowerShell:
@@ -95,7 +149,7 @@ Fill details (site title, admin username, password, email).
 Click Install WordPress → you get success message.
 
 Log in with the credentials you just created → dashboard page appears.
--------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 PART 3 – Custom Flask app + MySQL using docker-compose
 Step 1 – Create new project folder
 
@@ -190,9 +244,9 @@ http://localhost:5000
 You should see:
 Hello from 24BD5A0503 - NEKSHASRINIVAS
 
------------------------------------------------------------------------
------------------------------------------------------------------------
----------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 
 5. Docker CLI Commands
 Installing Docker and Setting up Nginx inside Ubuntu Container
