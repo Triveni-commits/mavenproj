@@ -330,12 +330,12 @@ get pods....
 -> kubectl get deployments
 ->kubectl  get pods
 ->kubectl describe pods
--→ kubectl describe pods
-→ expose deployment mynginx --type=NodePort --port=8080 --target-port=80
+→ kubectl expose deployment mynginx --type=NodePort --port=8080 --target-port=80
+kubectl get svc mynginx
 → kubectl scale deployment mynginx --replicas=4
 → minikube dashboard
-→ kubectl port-forward svc/mynginx 8081:80
-(open port 8081)
+→ kubectl port-forward svc/mynginx 8081:8080
+(open port 8081)(try 9090 if it doesnt work)
 → minikube tunnel
 → minikube service mynginx --url
 (it will show url open it)
