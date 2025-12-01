@@ -298,3 +298,185 @@ http://localhost:9090
 You should see your customized Nginx page:
 Welcome user, I'm Neksha Srinivas!
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🌟 FULL GIT COMMAND LIST WITH CLEAR PURPOSE
+
+I will group them logically so your brain remembers everything easily.
+
+1️⃣ Git Configuration — (Only once per laptop)
+git config --global user.name "Abhinav"
+git config --global user.email "abhinav@example.com"
+
+
+Purpose → Tells Git who you are.
+
+2️⃣ Creating a New Project Locally
+git init
+
+
+Purpose → Start Git tracking in an empty folder.
+
+3️⃣ Cloning Existing GitHub Repository
+git clone https://github.com/abhinav/reelongo-project.git
+
+
+Purpose → Download project from GitHub.
+
+4️⃣ Checking Current Status
+git status
+
+
+Purpose → See changed files, staged files, branch name.
+
+5️⃣ Staging Files
+git add .
+# or
+git add <filename>
+
+
+Purpose → Add changes to staging area.
+
+6️⃣ Commit Your Work
+git commit -m "Initial project setup"
+
+
+Purpose → Save a snapshot with a message.
+
+7️⃣ Push Code to GitHub
+git push origin main
+
+
+Purpose → Upload commits to GitHub on branch main.
+
+8️⃣ Pull Latest Code
+git pull origin main
+
+
+Purpose → Download + merge latest remote changes.
+
+9️⃣ Create & Switch to New Branch
+git checkout -b feature/login-page
+
+
+Purpose → Create & move to your feature branch.
+
+🔟 Switch Back to Main
+git checkout main
+
+1️⃣1️⃣ Merge Feature Branch into Main
+git merge feature/login-page
+
+
+Purpose → Bring feature work into main.
+
+1️⃣2️⃣ Fix “rejected – non-fast-forward” Error
+git pull --rebase origin main
+
+
+Purpose → Rebase your work on latest main.
+
+1️⃣3️⃣ Push Feature Branch Without Affecting Main
+git push origin feature/feat-1
+
+1️⃣4️⃣ Fetch All New Remote Branches
+git fetch origin
+
+
+Purpose → Update local repo with remote branches (without merging).
+
+1️⃣5️⃣ Avoid Merge Conflicts While Pulling
+git stash
+git pull --rebase origin main
+git stash pop
+
+
+Purpose → Safely update your branch with new changes.
+
+1️⃣6️⃣ Remove Sensitive File (Stop Tracking)
+git rm --cached api-keys.env
+git commit -m "Remove sensitive file"
+git push origin main
+
+1️⃣7️⃣ Force Remove Sensitive File from Entire Git History
+git filter-branch --force --index-filter \
+"git rm --cached --ignore-unmatch api-keys.env" \
+--prune-empty --tag-name-filter cat -- --all
+
+
+⚠️ Advanced. Use only when necessary.
+
+1️⃣8️⃣ Update Your Feature Branch with Latest Main
+git checkout feature/feat-1
+git fetch origin
+git rebase origin/main
+
+1️⃣9️⃣ Push Code to New Remote Repository
+git push origin feature/feat-1
+
+2️⃣0️⃣ Bring Your Branch Up to Date (with your changes safely stored)
+git stash
+git pull --rebase origin feature/feat-1
+git stash pop
+
+2️⃣1️⃣ Resolve Merge Conflicts After Editing Files
+git add .
+git commit -m "Resolve merge conflicts"
+
+2️⃣2️⃣ Delete Remote Branch
+git push origin --delete feature/old-feature
+
+⚡️ NOW THE COLLABORATIVE CODING PART ⚡️
+
+These are normally used during team work, labs, and organization repos.
+
+2️⃣3️⃣ Create a GitHub Organization
+
+(UI-based — no command)
+
+Steps:
+
+GitHub → Profile → "Your Organizations"
+
+Create New Organization → Free plan
+
+Invite members
+
+(No terminal commands for this.)
+
+2️⃣4️⃣ Add Remote for Shared Team Repository
+git remote add origin https://github.com/org-name/repo-name.git
+
+
+If origin already exists and you want to change it:
+
+git remote set-url origin https://github.com/org-name/repo-name.git
+
+2️⃣5️⃣ Working on Shared Repository (Team Flow)
+Step 1: Clone shared repo
+git clone https://github.com/org-name/repo-name.git
+cd repo-name
+
+Step 2: Create your own branch
+git checkout -b feature/task1
+
+Step 3: Push your work
+git add .
+git commit -m "Task 1 done"
+git push origin feature/task1
+
+Step 4: Create Pull Request (UI-based)
+2️⃣6️⃣ Resolving Conflicts When Working on the Same File
+git pull origin main
+# fix conflict markers (<<<<<<< ======= >>>>>>>)
+git add <file>
+git commit -m "Resolved conflict"
+git push origin main
+
+2️⃣7️⃣ Create Patch (for sending code changes)
+Create a patch from last commit:
+git format-patch -1
+
+Create patch for multiple commits:
+git format-patch <commit1>..<commit2>
+
+Apply patch received from someone:
+git apply file.patch
