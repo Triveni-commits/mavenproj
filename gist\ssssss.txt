@@ -1,0 +1,28 @@
+# setup
+mkdir demo-collab && cd demo-collab
+git init
+echo "line1" > file.txt
+git add file.txt
+git commit -m "initial"
+
+# create a branch, change, commit
+git checkout -b feature/triv
+echo "feature by triv" >> file.txt
+git add file.txt
+git commit -m "feat: add feature line by triv"
+
+# create patch from commit (example)
+git format-patch -1 HEAD
+
+# go back to main and simulate another change
+git checkout main
+echo "change on main" >> file.txt
+git add file.txt
+git commit -m "chore: change on main"
+
+# try merging feature (will likely conflict)
+git checkout feature/triv
+git merge main
+# resolve conflicts here in editor if any, then:
+git add file.txt
+git commit -m "resolve conflicts (demo)"
